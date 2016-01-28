@@ -17,11 +17,11 @@
                 inputObj: "=inputObj"
             },
             link: function (scope, element, attrs) {
-                
-                if(typeOf scope.inputObj.inputDate === 'string'){
+
+                if (typeof scope.inputObj.inputDate === 'string') {
                     scope.inputObj.inputDate = new Date(scope.inputObj.inputDate);
                 }
-                
+
                 scope.currentMonth = '';
                 scope.currentYear = '';
                 scope.disabledDates = [];
@@ -72,7 +72,7 @@
                             dateCleared();
                         }
                     });
-                };
+                }
 
                 if (scope.showTodayButton == 'true') {
                     buttons.push({
@@ -103,7 +103,7 @@
                         scope.enableDatesFrom.epoch = scope.inputObj.from.getTime();
                         if (scope.enableDatesFrom.epoch > scope.currentMonthFirstDayEpoch) {
                             scope.prevMonthDisable = true;
-                    }
+                        }
                     }
 
                     if (scope.inputObj.to) {
@@ -218,7 +218,7 @@
                             year: tempDate.getFullYear(),
                             day: tempDate.getDay(),
                             dateString: tempDate.toString(),
-                             dateDisabled: dateDisabled
+                            dateDisabled: dateDisabled
                         });
                         if (tempDate.getDate() == current_date.getDate()) {
                             scope.dateSelected(scope.dayList[scope.dayList.length - 1]);
@@ -303,10 +303,9 @@
                         dateSelected();
 
                         if (scope.templateType.toLowerCase() === 'modal' && scope.modal) {
-                          scope.closeModal();
-                        }
-                        else if(scope.popup) {
-                          scope.popup.close();
+                            scope.closeModal();
+                        } else if (scope.popup) {
+                            scope.popup.close();
                         }
                     }
                 };
@@ -350,9 +349,9 @@
                         if (outSideToFrom == true) {
                             scope.inputObj.callback(undefined);
                         } else {
-                        scope.inputObj.callback(scope.date_selection.selectedDate);
+                            scope.inputObj.callback(scope.date_selection.selectedDate);
+                        }
                     }
-                }
                 }
 
                 //Called when the user clicks on the 'Today' button
@@ -406,24 +405,24 @@
                 };
 
                 if (scope.templateType.toLowerCase() === 'modal') {
-                //Getting the reference for the 'ionic-datepicker' modal.
-                $ionicModal.fromTemplateUrl('ionic-datepicker-modal.html', {
-                    scope: scope,
-                    animation: 'slide-in-up'
-                }).then(function (modal) {
-                    scope.modal = modal;
-                });
-                scope.openModal = function () {
-                    scope.modal.show();
-                };
+                    //Getting the reference for the 'ionic-datepicker' modal.
+                    $ionicModal.fromTemplateUrl('ionic-datepicker-modal.html', {
+                        scope: scope,
+                        animation: 'slide-in-up'
+                    }).then(function (modal) {
+                        scope.modal = modal;
+                    });
+                    scope.openModal = function () {
+                        scope.modal.show();
+                    };
 
-                scope.closeModal = function () {
-                    scope.modal.hide();
-                };
+                    scope.closeModal = function () {
+                        scope.modal.hide();
+                    };
 
-                scope.on('$destroy', function () {
-                    scope.modal.remove();
-                });
+                    scope.on('$destroy', function () {
+                        scope.modal.remove();
+                    });
 
                 }
                 //Called when the user clicks on the button to invoke the 'ionic-datepicker'
@@ -446,7 +445,7 @@
                             templateUrl: 'ionic-datepicker-popup.html',
                             title: scope.titleLabel,
                             subTitle: '',
-                            cssClass:'picker-body',
+                            cssClass: 'picker-body',
                             scope: scope,
                             buttons: buttons
                         });
